@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://d0cxcey1snucn"]
+
+[ext_resource type="Script" uid="uid://bf470wcijx851" path="res://scripts/player_character_controller.gd" id="1_4bfg7"]
+[ext_resource type="PackedScene" uid="uid://b72sfqk7hfkfg" path="res://components/player_character_state.tscn" id="2_4yb23"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h1le1"]
+radius = 0.4404297
+
+[node name="PlayerCharacter" type="CharacterBody3D" unique_id=538409022 node_paths=PackedStringArray("neck", "camera", "camera_focus")]
+script = ExtResource("1_4bfg7")
+neck = NodePath("Neck")
+camera = NodePath("Neck/Camera3D")
+camera_focus = NodePath("Neck/Camera3D/CameraFocus")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2078028058]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_h1le1")
+
+[node name="Neck" type="Node3D" parent="." unique_id=1175032577]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5575037, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Neck" unique_id=1859442326]
+
+[node name="CameraFocus" type="Node3D" parent="Neck/Camera3D" unique_id=623313454]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2344067)
+
+[node name="PlayerCharacterState" parent="." unique_id=928490522 instance=ExtResource("2_4yb23")]
